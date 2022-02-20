@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>AroundMe</title>
+    <style>
+        .orange_back{
+            background-color: #ee8833;
+        }
+        #article{
+            margin: 250px auto;
+        }
+        .button {
+            /*display: inline-block;*/
+            padding: 12px;
+            margin: 0 30px 0 0;
+            border: none;
+            border-radius: 3px;
+            text-decoration: none;
+            font-family: "Comfortaa", sans-serif;
+            font-weight: 300;
+            font-size: medium;
+            text-align: center;
+            color: white;
+            line-height: 1;
+            cursor: pointer;
+        }
+        .button.black{
+            background: #292a33;
+        }
+        .button:hover.black{
+            background: #212126;
+        }
+        .button.orange {
+            background: #ee8833;
+        }
+        .button:hover.orange{
+            background: #9B4F11;
+        }
+        .row_center{
+            width:70%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: row;
+        }
+        .column{
+            display: flex;
+            flex-direction: column;
+        }
+        .numb{
+            width: 600px;
+            height: auto;
+            margin: 0 0 0 20px;
+        }
+        .pic{
+            width: 600px;
+            height: auto;
+            margin: 0 0 0 20px;
+        }
+        .img{
+            width: 100%;
+            height: auto;
+            margin: -350px 0 0 0;
+            max-width: 600px;
+        }
+        .img_numb{
+            /*width: 400%;*/
+            /*height: auto;*/
+            margin: 10px 0 0 10px;
+            /*max-width: 270px;*/
+            opacity: 0.5;
+            align-self: flex-end;
+            z-index: 0;
+        }
+        h1{
+            font-family: "Comfortaa", sans-serif;
+            font-size: xxx-large;
+            font-weight: 500;
+            color: white;
+        }
+        h2{
+            font-family: "Comfortaa", sans-serif;
+            font-weight: 300;
+            font-size: medium;
+            color: white;
+        }
+        h3{
+            font-family: "Comfortaa", sans-serif;
+            font-weight: 300;
+            font-size: large;
+            color: white;
+            margin: 5% 60px 0 0;
+        }
+        h4{
+            font-family: "Comfortaa", sans-serif;
+            font-weight: 300;
+            font-size: xx-large;
+            color: white;
+            margin: 5% 60px 0 0;
+        }
+        p{
+            font-family: "Open Sans", sans-serif;
+            font-weight: 300;
+            font-size: large;
+            color: white;
+            margin: 5% 60px 10% 0;
+        }
+        a{
+            font-family: "Comfortaa", sans-serif;
+            font-weight: 300;
+            font-size: medium;
+            color: white;
+        }
+        .row_back{
+            display: flex;
+            flex-direction: row;
+        }
+        .half_block_back{
+            background-color: #334455;
+            width:50%;
+            align-content: end;
+        }
+        .half_block_back_dark{
+            background-color: #292a33;
+            width:50%;
+        }
+        .head_buttons{
+            margin: 30px 0;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+        }
+        .right_text{
+            margin: 20% 0 25% 20px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div class="orange_back">
+    <div class="row_center">
+        <div id="article">
+            <h1>AroundMe</h1>
+            <h2>Get familiar with the queen of all social media apps and start
+                sharing your life through AroundMe!</h2>
+            <div class="head_buttons">
+                <a class="button black" href="https://www.apple.com/ru/app-store/">App Store </a>
+                <a class="button black" href="https://play.google.com/store?hl=ru&gl=US">Google Play</a>
+            </div>
+        </div>
+        <div class="column">
+            <div class="numb">
+                <img class="img_numb" src="images/01.png" alt="">
+            </div>
+            <div class="pic">
+                <img class="img" src="images/hand-holding-phone (low).png" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row_back">
+    <div class="half_block_back">
+        <img class="img_numb" src="images/02.png" alt="">
+    </div>
+    <div class="half_block_back_dark">
+        <div class="right_text">
+            <h3>SO YOU WANNA BE AN AROUNDME STAR?!</h3>
+            <h4>AroundMe: Everything you need to know!</h4>
+            <p>AroundMe is a social media app that allows users to share photos and videos from their lives, add captions,
+                edit filters, tweak settings, engage with others, explore and creep, and so, so much more — you just have to know what you're
+                doing so you don't get overwhelmed!</p>
+            <a class="button orange" href="read_more.html">Read more</a>
+        </div>
+    </div>
+</div>
+
+
+
+
+</body>
+</html>
