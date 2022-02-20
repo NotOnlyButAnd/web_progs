@@ -11,9 +11,9 @@
         .orange_back{
             background-color: #ee8833;
         }
-        #article{
-            margin: 250px auto;
-        }
+        /*#article{
+            !*margin: 250px auto;*!
+        }*/
         .button {
             /*display: inline-block;*/
             padding: 12px;
@@ -46,12 +46,17 @@
             margin: 0 auto;
             display: flex;
             flex-direction: row;
+            align-items: center;
         }
         .column{
             display: flex;
             flex-direction: column;
+            justify-content: flex-end;
+            min-width: 300px;
+            position: relative;
         }
-        .numb{
+        /* Старые обертки для первого блока колонки */
+        /*.numb{
             width: 600px;
             height: auto;
             margin: 0 0 0 20px;
@@ -60,59 +65,73 @@
             width: 600px;
             height: auto;
             margin: 0 0 0 20px;
-        }
+        }*/
         .img{
             width: 100%;
             height: auto;
-            margin: -350px 0 0 0;
-            max-width: 600px;
+            /*margin: 30px 0 0 0;*/
+            max-width: 700px;
+            z-index: 2;
+        }
+        .img_numb_behind{
+            height: auto;
+            width: 45%;
+            max-width: 270px;
+            z-index: 1;
+            opacity: 0.5;
+            /*margin: 250px 0 0 0;*/
+            /*display: flex;*/
+            /*flex-direction: column;
+            align-self: center;*/
+            position: absolute;
+            top: 20%;
+            left: 45%;
         }
         .img_numb{
-            /*width: 400%;*/
-            /*height: auto;*/
+            width: 100%;
+            height: auto;
             margin: 10px 0 0 10px;
-            /*max-width: 270px;*/
+            max-width: 270px;
             opacity: 0.5;
-            align-self: flex-end;
-            z-index: 0;
+            z-index: 1;
         }
         h1{
             font-family: "Comfortaa", sans-serif;
-            font-size: xxx-large;
+            font-size: 400%;
             font-weight: 500;
             color: white;
         }
         h2{
             font-family: "Comfortaa", sans-serif;
             font-weight: 300;
-            font-size: medium;
+            font-size: 100%;
             color: white;
         }
         h3{
             font-family: "Comfortaa", sans-serif;
             font-weight: 300;
-            font-size: large;
+            font-size: 125%;
             color: white;
             margin: 5% 60px 0 0;
         }
         h4{
             font-family: "Comfortaa", sans-serif;
             font-weight: 300;
-            font-size: xx-large;
+            font-size: 150%;
             color: white;
             margin: 5% 60px 0 0;
         }
         p{
             font-family: "Open Sans", sans-serif;
             font-weight: 300;
-            font-size: large;
+            font-size: 80%;
             color: white;
             margin: 5% 60px 10% 0;
         }
         a{
             font-family: "Comfortaa", sans-serif;
             font-weight: 300;
-            font-size: medium;
+            font-size: 100%;
             color: white;
         }
         .row_back{
@@ -122,7 +141,16 @@
         .half_block_back{
             background-color: #334455;
             width:50%;
-            align-content: end;
+            display: flex;
+            flex-direction: column;
+            /*flex-wrap: wrap;*/
+            justify-content: flex-end;
+            align-items: flex-end;
+            position: relative;
+        }
+        .half_block_back.smaller{
+            width:35%;
+            /*position: relative;*/
         }
         .half_block_back_dark{
             background-color: #292a33;
@@ -135,9 +163,33 @@
             justify-content: flex-start;
         }
         .right_text{
-            margin: 20% 0 25% 20px;
+            margin: 10% 0 15% 20px;
+            z-index: 2;
         }
+        .img.block2{
+            align-self: flex-start;
+            max-width: 300px;
+            position: absolute;
+            top: -8%;
+            left: 8%;
+        }
+        .img_numb.three{
+            align-self: flex-start;
+            z-index: 1;
+            position: absolute;
+            /*top:  70%;*/
+        }
+        .opacity_20{
+            opacity: 0.2;
+        }
+        .width_65{
 
+            width: 65%;
+            flex: 1 1 0%;
+            background-image: url("images/горы полароид 1.jpg");
+            background-position: center;
+            background-size: cover;
+        }
     </style>
 
 </head>
@@ -155,18 +207,15 @@
             </div>
         </div>
         <div class="column">
-            <div class="numb">
-                <img class="img_numb" src="images/01.png" alt="">
-            </div>
-            <div class="pic">
-                <img class="img" src="images/hand-holding-phone (low).png" alt="">
-            </div>
+            <img class="img_numb_behind" src="images/01_1.png" alt="">
+            <img class="img" src="images/hand-holding-phone (low).png" alt="">
         </div>
     </div>
 </div>
 
 <div class="row_back">
     <div class="half_block_back">
+        <img src="images/phones качели круг.png" alt="" class="img block2">
         <img class="img_numb" src="images/02.png" alt="">
     </div>
     <div class="half_block_back_dark">
@@ -179,6 +228,25 @@
             <a class="button orange" href="read_more.html">Read more</a>
         </div>
     </div>
+</div>
+
+<div class="row_back">
+    <div class="half_block_back smaller">
+        <div class="right_text">
+            <h3>JULY 19, 2018</h3>
+            <h4>AroundMe now lets you see who's online for more efficient DM'ing</h4>
+            <p>AroundMe is a social media app that allows users to share photos and videos from their lives, add captions,
+                edit filters, tweak settings, engage with others, explore and creep, and so, so much more — you just have to know what you're
+                doing so you don't get overwhelmed!</p>
+            <a class="button orange" href="read_more.html">Read more</a>
+        </div>
+        <img src="images/03.png" alt="" class="img_numb three opacity_20">
+    </div>
+    <div class="width_65">
+
+    </div>
+
+
 </div>
 
 
