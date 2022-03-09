@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS 11 variant</title>
+    <style>
+        .orange_back {
+            background-color: #ee8833;
+        }
+
+        .displayed{
+            display:block;
+        }
+        .hidden{
+            display:none;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>JS tasks. Variant 11</h1>
+    <input type="button" id="task_1_button" class="displayed" value="Task 1. Date\time" />
+
+    <div id="task_1" class="displayed"> Task 1...</div>
+
+    <input type="button" id="task_2_button" class="displayed" value="Task 2. Calendar" />
+
+    <script>
+        let elem = document.getElementById('task_1_button')
+        
+        elem.onclick = function() {
+        let block = document.getElementById('task_1')
+        alert(block.getAttribute('class'));
+        if (block.classname == "displayed"){
+
+        block.setAttribute('class','hidden')}
+        else{
+
+        block.setAttribute('class', 'displayed'}
+        }
+    </script>
+
+    <script>
+        document.getElementById('task_2_button').onclick = function() {
+        if (document.getElementById('task_1').classname == "displayed"){
+        alert(document.getElementById('task_1').classname)
+        document.getElementById('task_1').classname = "hidden";}
+        else{
+        alert(document.getElementById('task_1').classname)
+        document.getElementById('task_1').classname = "displayed";}
+        }
+    </script>
+
+</body>
+</html>
