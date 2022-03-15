@@ -1,58 +1,124 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>JS 11 variant</title>
-    <style>
-        .orange_back {
-            background-color: #ee8833;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>JS 11 variant</title>
+  <style>
+    .orange_back {
+      background-color: #ee8833;
+    }
 
-        .displayed{
-            display:block;
-        }
-        .hidden{
-            display:none;
-        }
-    </style>
+    .displayed{
+      display:block;
+    }
+    .hidden{
+      display:none;
+    }
+    .fixed_block{
+      position: fixed;
+      width: 300px;
+      bottom: 5px;
+      /*margin: auto;*/
+      left: 50%;
+      margin: 0 0 0 -180px;
+      padding: 20px;
+      border: 1px solid #000;
+    }
+  </style>
 
 </head>
 <body>
-    <h1>JS tasks. Variant 11</h1>
-    <input type="button" id="task_1_button" class="displayed" value="Task 1. Date\time" />
+<h1>JS tasks. Variant 11</h1>
 
-    <div id="task_1" class="displayed"> Task 1...</div>
+<input type="button" id="task_1_button" class="displayed" value="Task 1. Date\time" />
+<div id="task_1" class=" hidden fixed_block">
+  Task 1... Date - 4; Time - 6; Location - 4;
+</div>
 
-    <input type="button" id="task_2_button" class="displayed" value="Task 2. Calendar" />
+<input type="button" id="task_2_button" class="displayed" value="Task 2. Calendar" />
+<div id="task_2" class="hidden"> Task 2...</div>
 
-    <script>
-        let elem = document.getElementById('task_1_button')
-        
-        elem.onclick = function() {
-        let block = document.getElementById('task_1')
-        alert(block.getAttribute('class'));
-        if (block.classname == "displayed"){
+<input type="button" id="task_3_button" class="displayed" value="Task 3." />
+<div id="task_3" class="hidden"> Task 3...</div>
 
-        block.setAttribute('class','hidden')}
-        else{
+<input type="button" id="task_4_button" class="displayed" value="Task 4." />
+<div id="task_4" class="hidden"> Task 4...</div>
 
-        block.setAttribute('class', 'displayed'}
-        }
-    </script>
+<script type="text/javascript">
+  let elem1 = document.getElementById('task_1_button')
+  let elem2 = document.getElementById('task_2_button')
+  let elem3 = document.getElementById('task_3_button')
+  let elem4 = document.getElementById('task_4_button')
 
-    <script>
-        document.getElementById('task_2_button').onclick = function() {
-        if (document.getElementById('task_1').classname == "displayed"){
-        alert(document.getElementById('task_1').classname)
-        document.getElementById('task_1').classname = "hidden";}
-        else{
-        alert(document.getElementById('task_1').classname)
-        document.getElementById('task_1').classname = "displayed";}
-        }
-    </script>
+  /*Task 1 - Date-Time*/
+  elem1.onclick = function() {
+    let block = document.getElementById('task_1')
+    if (block.className === "displayed fixed_block"){
+      block.setAttribute('class','hidden fixed_block')}
+    else{
+
+      block.setAttribute('class', 'displayed fixed_block')}
+  }
+  var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  function below_10(number){
+    if (number < 10)
+      number = "0" + number
+    return number
+  }
+  function my_date_time(){
+    let now = new Date();
+    let day = below_10(now.getDate()).toString()
+    let time = ""
+    let hours = now.getHours()
+    if (hours >= 12)
+      if (hours == 12)
+        time =  hours + ":" + below_10(now.getMinutes()) + ":" + below_10(now.getSeconds()) + " p.m."
+      else
+      {
+        let temp = 24 - hours
+        time = below_10(temp) + ":" + below_10(now.getMinutes()) + ":" + below_10(now.getSeconds()) + " p.m."
+      }
+    else
+      if (hours == 0)
+        time =  12 + ":" + below_10(now.getMinutes()) + ":" + below_10(now.getSeconds()) + " a.m."
+      else
+        time =  below_10(hours) + ":" + below_10(now.getMinutes()) + ":" + below_10(now.getSeconds()) + " a.m."
+    let strDateTime = now.getFullYear() + " " + day + " " + months[now.getMonth()] + ", " +
+            days[now.getDay()] + " " + time
+    document.getElementById("task_1").innerHTML = strDateTime;
+  }
+  setInterval(my_date_time, 1000);
+
+  elem2.onclick = function() {
+    let block = document.getElementById('task_2')
+    if (block.className === "displayed"){
+      block.setAttribute('class','hidden')}
+    else{
+
+      block.setAttribute('class', 'displayed')}
+  }
+  elem3.onclick = function() {
+    let block = document.getElementById('task_3')
+    if (block.className === "displayed"){
+      block.setAttribute('class','hidden')}
+    else{
+
+      block.setAttribute('class', 'displayed')}
+  }
+  elem4.onclick = function() {
+    let block = document.getElementById('task_4')
+    if (block.className === "displayed"){
+      block.setAttribute('class','hidden')}
+    else{
+
+      block.setAttribute('class', 'displayed')}
+  }
+</script>
+
 
 </body>
 </html>
