@@ -27,6 +27,9 @@
             padding: 20px;
             border: 1px solid #000;
         }
+        #task_4.displayed{
+            display:flex;
+        }
     </style>
 
 </head>
@@ -45,7 +48,14 @@
 <div id="task_3" class="hidden"> Task 3...</div>
 
 <input type="button" id="task_4_button" class="displayed" value="Task 4." />
-<div id="task_4" class="hidden"> Task 4...</div>
+<div id="task_4" class="hidden">
+    <div id="1">block 1</div>
+    <div id="2">block 2</div>
+    <div id="3">block 3</div>
+    <div id="4">block 4</div>
+    <div id="5">block 5</div>
+    <div id="6">block 6</div>
+</div>
 
 <script type="text/javascript">
     let elem1 = document.getElementById('task_1_button')
@@ -93,6 +103,7 @@
     }
     setInterval(my_date_time, 1000);
 
+    /*Task 2 - Calendar*/
     elem2.onclick = function() {
         let block = document.getElementById('task_2')
         if (block.className === "displayed"){
@@ -104,19 +115,9 @@
             let tbody = document.createElement('tbody');
             table.appendChild(tbody);
 
-            /*let row = document.createElement('tr'); // Открываем тег элемента ‹tr›.
-            let row_data = document.createElement('td');
-            row_data.innerHTML = "111"
-            row.appendChild(row_data);
-            tbody.appendChild(row);
-            row_data = document.createElement('td');
-            row_data.innerHTML = "222"
-            row.appendChild(row_data);
-            tbody.appendChild(row);*/
             let my_month = 2
             let now = new Date(2022, my_month, 1);
             let start = now.getDay()
-            alert(start)
             let t_num = 1
             let next_month = new Date(2022, my_month + 1, 0)
             let end = next_month.getDate()
@@ -128,7 +129,6 @@
             let row_1_data = document.createElement('td');
             row_1_data.style.backgroundColor = "green";
             row_1_data.innerHTML = months[my_month];
-            alert(months[my_month])
             row_1.appendChild(row_1_data);
             // row_1.innerHTML = months[my_month];
             tbody.appendChild(row_1);
@@ -182,14 +182,38 @@
             block.appendChild(table);
             block.setAttribute('class', 'displayed')}
     }
+
+    /*Task 3 - DOM*/
     elem3.onclick = function() {
         let block = document.getElementById('task_3')
         if (block.className === "displayed"){
             block.setAttribute('class','hidden')}
         else{
+            // Все элементы DOM дети body
+            let arr_dom = document.body.childNodes;
+            block.innerText = arr_dom;
+            let count = 0;
+            for (let i = 0; i < arr_dom.length; i++)
+            {
+                if (arr_dom[i].tagName == 'DIV')
+                {
+                    count += 1;
+                }
+            }
+            alert(count)
+            //alert(arr_dom[0])
+            // [object Text]
 
+            // Div элементы DOM
+            //const divList = document.body.querySelectorAll('div');
+            //block.innerText = divList[0].tagName;
+            //alert(divList[0])
+            //alert("FFFFF")
+            //block.innerText += "\n\nCount of Div's in DOM: " + divList.length.toString()
             block.setAttribute('class', 'displayed')}
     }
+
+    /*Task 4 - Changing Object*/
     elem4.onclick = function() {
         let block = document.getElementById('task_4')
         if (block.className === "displayed"){
