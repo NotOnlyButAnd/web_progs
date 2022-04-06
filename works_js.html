@@ -44,10 +44,10 @@
 <input type="button" id="task_2_button" class="displayed" value="Task 2. Calendar" />
 <div id="task_2" class="hidden"> Task 2...</div>
 
-<input type="button" id="task_3_button" class="displayed" value="Task 3." />
+<input type="button" id="task_3_button" class="displayed" value="Task 3. DOM" />
 <div id="task_3" class="hidden"> Task 3...</div>
 
-<input type="button" id="task_4_button" class="displayed" value="Task 4." />
+<input type="button" id="task_4_button" class="displayed" value="Task 4. Changing element" />
 <div id="task_4" class="hidden">
     <div id="1">block 1</div>
     <div id="2">block 2</div>
@@ -57,11 +57,22 @@
     <div id="6">block 6</div>
 </div>
 
+<input type="button" id="task_5_button" class="displayed" value="Task 5." />
+<div id="task_5" class="hidden">
+    <div id="ins_div">
+        <a></a>
+    </div>
+    Task 5...
+    <input type="button" id="start_insert_button" class="displayed" value="Начать вставку" />
+</div>
+
 <script type="text/javascript">
     let elem1 = document.getElementById('task_1_button')
     let elem2 = document.getElementById('task_2_button')
     let elem3 = document.getElementById('task_3_button')
     let elem4 = document.getElementById('task_4_button')
+    let elem5 = document.getElementById('task_5_button')
+    let start_ins = document.getElementById('start_insert_button')
 
     /*Task 1 - Date-Time*/
     elem1.onclick = function() {
@@ -74,11 +85,13 @@
     }
     var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
     function below_10(number){
         if (number < 10)
             number = "0" + number
         return number
     }
+
     function my_date_time(){
         let now = new Date();
         let day = below_10(now.getDate()).toString()
@@ -101,6 +114,7 @@
             days[now.getDay()] + " " + time
         document.getElementById("task_1").innerHTML = strDateTime;
     }
+
     setInterval(my_date_time, 1000);
 
     /*Task 2 - Calendar*/
@@ -191,7 +205,7 @@
         else{
             // Все элементы DOM дети body
             let arr_dom = document.body.childNodes;
-            block.innerText = arr_dom;
+            //block.innerText = arr_dom;
             let count = 0;
             for (let i = 0; i < arr_dom.length; i++)
             {
@@ -200,7 +214,7 @@
                     count += 1;
                 }
             }
-            alert(count)
+            block.innerText = "Количество блоков DIV детей Body: " + count.toString();
             //alert(arr_dom[0])
             // [object Text]
 
@@ -214,14 +228,52 @@
     }
 
     /*Task 4 - Changing Object*/
+    function generateColor() {
+        return '#' + Math.floor(Math.random()*16777215).toString(16)
+    }
+
+    function my_changing()
+    {
+        let rand_block_num =  Math.random() * (6 - 1) + 1;
+        //alert(rand_block_num.toString());
+        document.getElementById(rand_block_num.toFixed().toString()).style.backgroundColor = generateColor();
+    }
+
+    setInterval(my_changing, 150);
+
     elem4.onclick = function() {
         let block = document.getElementById('task_4')
         if (block.className === "displayed"){
             block.setAttribute('class','hidden')}
         else{
-
             block.setAttribute('class', 'displayed')}
     }
+
+    /*Task 5 - Inserting Object*/
+    elem5.onclick = function() {
+        let block = document.getElementById('task_5')
+        if (block.className === "displayed"){
+            block.setAttribute('class','hidden')}
+        else{
+            block.setAttribute('class', 'displayed')}
+    }
+
+    start_ins.onclick = function() {
+        let block = document.getElementById('ins_div')
+        let result = prompt("Введите ссылку для вставки", "https://some_url.com");
+        while (result != null){
+            let elem = document.createElement("div"); // создаем элемент
+            let refText = document.createTextNode(result);  // создаем текст ссылки
+            let a = document.createElement('a');    // создаем эл-т ссылка
+            a.text = result;
+            a.href = result;
+
+            elem.appendChild(a);
+            block.insertBefore(elem, block.firstChild.nextSibling); // получаем первый элемент, перед которым будет идти добавление и вставляем
+            result = prompt("Введите ссылку для вставки", "https://some_url.com");
+        }
+    }
+
 </script>
 
 
