@@ -30,6 +30,12 @@
         #task_4.displayed{
             display:flex;
         }
+        #ins_pic{
+            border: double black;
+        }
+        .my_list{
+            display: none;
+        }
     </style>
 
 </head>
@@ -57,7 +63,7 @@
     <div id="6">block 6</div>
 </div>
 
-<input type="button" id="task_5_button" class="displayed" value="Task 5." />
+<input type="button" id="task_5_button" class="displayed" value="Task 5. Inputing URLs" />
 <div id="task_5" class="hidden">
     <div id="ins_div">
         <a></a>
@@ -66,12 +72,28 @@
     <input type="button" id="start_insert_button" class="displayed" value="Начать вставку" />
 </div>
 
+<input type="button" id="task_6_button" class="displayed" value="Task 6. Handling" />
+<div id="task_6" class="hidden">
+        <img id="ins_pic" src="1g.jpg" style = "width: 200px; height: 200px" alt="">
+</div>
+
+<input type="button" id="task_7_button" class="displayed" value="Task 7. Menu (disappears!)" />
+<div id="task_7" class="hidden">
+    <ul id="list">Здесь сладости (нажми меня!)</ul>
+    <li class="my_list">Мёд</li>
+    <li class="my_list">Чупа Чупс</li>
+    <li class="my_list">Нутелла</li>
+</div>
+
 <script type="text/javascript">
     let elem1 = document.getElementById('task_1_button')
     let elem2 = document.getElementById('task_2_button')
     let elem3 = document.getElementById('task_3_button')
     let elem4 = document.getElementById('task_4_button')
     let elem5 = document.getElementById('task_5_button')
+    let elem6 = document.getElementById('task_6_button')
+    let elem7 = document.getElementById('task_7_button')
+    let list = document.getElementById('list')
     let start_ins = document.getElementById('start_insert_button')
 
     /*Task 1 - Date-Time*/
@@ -274,6 +296,68 @@
         }
     }
 
+    /*Task 6 - Handling MOUSEOVER */
+    let pic_arr = ["1g.jpg", "2g.jpg", "3g.jpg", "4g.jpg", "5g.jpg"];
+    let ind = 1;
+    let add_f = 1;
+    ins_pic.onmouseover = ins_pic.onmouseout = handler;
+
+    function handler(event) {
+        if (event.type == 'mouseover' || event.type == 'mouseout') {
+
+            //alert(ind)
+            //alert(pic_arr.length)
+            if (ind >= pic_arr.length) {
+                add_f = -1;
+                ind += add_f;
+                document.getElementById('ins_pic').setAttribute('src', ind.toString() + 'g.jpg');
+            }
+            else
+                if (ind == 1){
+                add_f = 1;
+                ind += add_f;
+                document.getElementById('ins_pic').setAttribute('src', ind.toString() + 'g.jpg');
+                }
+                else{
+                    ind += add_f;
+                    document.getElementById('ins_pic').setAttribute('src', ind.toString() + 'g.jpg');
+                }
+            //ind += add_f;
+            //document.getElementById('ins_pic').setAttribute('src', ind.toString() + 'g.jpg');
+
+        }
+    }
+
+    elem6.onclick = function() {
+        let block = document.getElementById('task_6')
+        if (block.className === "displayed"){
+            block.setAttribute('class','hidden')}
+        else{
+            block.setAttribute('class', 'displayed')
+        }
+    }
+
+    elem7.onclick = function() {
+        let block = document.getElementById('task_7')
+        if (block.className === "displayed"){
+            block.setAttribute('class','hidden')}
+        else{
+            block.setAttribute('class', 'displayed')
+        }
+    }
+
+    list.onclick = function() {
+        let block = document.getElementsByClassName('my_list')
+        for (let i = 0; i < block.length; i++)
+        {
+            if (block[i].className === "displayed"){
+                block[i].setAttribute('class','hidden')}
+            else{
+                block[i].setAttribute('class', 'displayed')
+            }
+        }
+
+    }
 </script>
 
 
