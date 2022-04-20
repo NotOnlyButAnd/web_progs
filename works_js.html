@@ -258,8 +258,7 @@
         return '#' + Math.floor(Math.random()*16777215).toString(16)
     }
 
-    function my_changing()
-    {
+    function my_changing() {
         let rand_block_num =  Math.random() * (6 - 1) + 1;
         //alert(rand_block_num.toString());
         document.getElementById(rand_block_num.toFixed().toString()).style.backgroundColor = generateColor();
@@ -341,28 +340,34 @@
         }
     }
 
+    /*Task 7 - CALLBACK + disappear */
     elem7.onclick = function() {
         let block = document.getElementById('task_7')
         if (block.className === "displayed"){
             block.setAttribute('class','hidden');
-            //choice_slad(alert_sladosty)
             }
         else{
             block.setAttribute('class', 'displayed')
         }
     }
 
-    function fade(element) {
+
+    let flag = 0
+    function fade(element, callback) {
         let op = 1;  // initial opacity
         let timer = setInterval(function () {
             if (op <= 0.1){
                 clearInterval(timer);
                 element.style.display = 'none';
+                flag += 1;
+                callback();
             }
             element.style.opacity = op;
             element.style.filter = 'alpha(opacity=' + op * 100 + ")";
             op -= op * 0.1;
         }, 50);
+
+
     }
 
     let sl1 = document.getElementById('sl_1')
@@ -370,28 +375,23 @@
     let sl3 = document.getElementById('sl_3')
     block_1 = [sl1, sl2, sl3]
 
-    function choice_slad (callback){
-        sl1.onclick = function (){
-            fade(sl1)
-        }
-        sl2.onclick = function (){
-            fade(sl2)
-        }
-        sl3.onclick = function (){
-            fade(sl3);
-        }
-        callback();
+    sl1.addEventListener('click', () => fade(sl1, alert_sladosty))
+    sl2.addEventListener('click', () => fade(sl2, alert_sladosty))
+    sl3.addEventListener('click', () => fade(sl3, alert_sladosty))
+
+    // другой метод создания обработчика
+    /* sl2.onclick = function (){
+        fade(sl2)
     }
+    sl3.onclick = function (){
+        fade(sl3);
+    }*/
 
-
-
-    function t1 (){
-        document.getElementById('sl_end').setAttribute('class', 'displayed')
-    };
 
     function alert_sladosty(){
-        //alert("!!!")
-        document.getElementById('sl_end').setAttribute('class', 'displayed')
+        if (flag === 3){
+            document.getElementById('sl_end').setAttribute('class', 'displayed')
+        }
     }
 
     // отображение списка вкусняшек
@@ -402,7 +402,6 @@
             //alert(block_1[i].innerHTML)
             if (block_1[i].className === "my_list_no"){
                 block_1[i].setAttribute('class', 'my_list_displayed')
-                choice_slad(t1)
             }
             else{
                 block_1[i].setAttribute('class', 'my_list_no')
