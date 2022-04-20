@@ -33,8 +33,11 @@
         #ins_pic{
             border: double black;
         }
-        .my_list{
+        .my_list_no{
             display: none;
+        }
+        .my_list_display{
+            display: block;
         }
     </style>
 
@@ -80,9 +83,10 @@
 <input type="button" id="task_7_button" class="displayed" value="Task 7. Menu (disappears!)" />
 <div id="task_7" class="hidden">
     <ul id="list">Здесь сладости (нажми меня!)</ul>
-    <li class="my_list">Мёд</li>
-    <li class="my_list">Чупа Чупс</li>
-    <li class="my_list">Нутелла</li>
+    <li id="sl_1" class="my_list_no">Мёд</li>
+    <li id="sl_2" class="my_list_no">Чупа Чупс</li>
+    <li id="sl_3" class="my_list_no">Нутелла</li>
+    <p id='sl_end' class="hidden">Сладости закончились!</p>
 </div>
 
 <script type="text/javascript">
@@ -340,24 +344,73 @@
     elem7.onclick = function() {
         let block = document.getElementById('task_7')
         if (block.className === "displayed"){
-            block.setAttribute('class','hidden')}
+            block.setAttribute('class','hidden');
+            //choice_slad(alert_sladosty)
+            }
         else{
             block.setAttribute('class', 'displayed')
         }
     }
 
+    function fade(element) {
+        let op = 1;  // initial opacity
+        let timer = setInterval(function () {
+            if (op <= 0.1){
+                clearInterval(timer);
+                element.style.display = 'none';
+            }
+            element.style.opacity = op;
+            element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+            op -= op * 0.1;
+        }, 50);
+    }
+
+    let sl1 = document.getElementById('sl_1')
+    let sl2 = document.getElementById('sl_2')
+    let sl3 = document.getElementById('sl_3')
+    block_1 = [sl1, sl2, sl3]
+
+    function choice_slad (callback){
+        sl1.onclick = function (){
+            fade(sl1)
+        }
+        sl2.onclick = function (){
+            fade(sl2)
+        }
+        sl3.onclick = function (){
+            fade(sl3);
+        }
+        callback();
+    }
+
+
+
+    function t1 (){
+        document.getElementById('sl_end').setAttribute('class', 'displayed')
+    };
+
+    function alert_sladosty(){
+        //alert("!!!")
+        document.getElementById('sl_end').setAttribute('class', 'displayed')
+    }
+
+    // отображение списка вкусняшек
     list.onclick = function() {
-        let block = document.getElementsByClassName('my_list')
-        for (let i = 0; i < block.length; i++)
+        //alert(block_1.length)
+        for (let i = 0; i <= block_1.length; i++)
         {
-            if (block[i].className === "displayed"){
-                block[i].setAttribute('class','hidden')}
+            //alert(block_1[i].innerHTML)
+            if (block_1[i].className === "my_list_no"){
+                block_1[i].setAttribute('class', 'my_list_displayed')
+                choice_slad(t1)
+            }
             else{
-                block[i].setAttribute('class', 'displayed')
+                block_1[i].setAttribute('class', 'my_list_no')
             }
         }
-
     }
+
+
 </script>
 
 
