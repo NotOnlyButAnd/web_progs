@@ -93,7 +93,7 @@
 <input type="button" id="task_8_button" class="displayed" value="Task 8. Picture (disappears!)" />
 <div id="task_8" class="hidden">
     <p id='text-pic' style="z-index: 0">ОПА привет :-0</p>
-    <img src="img_1.jpg" width="20%" style="z-index: 1">
+    <img id='pic8' src="img_1.jpg" width="20%" style="z-index: 1">
 </div>
 
 <!--ПРОВЕРКА БЛОЧНЫХ И СТРОЧНХ эл-тов-->
@@ -446,7 +446,21 @@
         }
         else{
             block.setAttribute('class', 'displayed')
+            task_8()
         }
+    }
+    
+    function task_8(){
+        const img=document.querySelector("#pic8");
+        const text=document.querySelector("#text-pic");
+    
+        logo.addEventListener('mouseover',function(){
+            img.style.opacity='0';
+        })
+    
+        logo.addEventListener('mouseout',function(){
+            img.style.opacity='1';
+        })
     }
 
 </script>
